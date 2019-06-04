@@ -66,40 +66,5 @@ shinyUI(
       )
     ),
 
-    tabPanel(
-      "3rd Plot",
-      sidebarPanel(
-        sliderInput("age","Average Actor Age:",
-                    min = 5, max = 95.5, value = 40)
-      ),
-      mainPanel(
-       plotOutput("movieAge")
-      )
-    ),
-    
-    tabPanel(
-      "Ratings ScatterPlot",
-    
-      sidebarLayout(
-        position = "right",
-        
-        # All the genres that a user can choose
-        sidebarPanel(
-          selectInput("Genre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
-                                                           "Comedy","Crime","Documentary","Drama","Family",
-                                                           "Fantasy","History","Horror","Musical","Mystery",
-                                                           "Romance","Sci-Fi","Thriller","War","Western",
-                                                           "Action,Adventure","Action,Comedy","Action,Sci-Fi",
-                                                           "Comedy,Drama","Drama,Romance","Documentary,Horror",
-                                                           "Horror,Romance","Horror,Thriller","Musical,Romance"
-                                                           )
-          )
-        ),
-        mainPanel(
-          plotOutput("genreRate") # Scatter plot
-        )
-
       )
     )
-  )
-)

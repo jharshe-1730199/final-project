@@ -43,12 +43,17 @@ shinyServer(
 <<<<<<< HEAD
                           filter(gsub(" ", "", toString(input$Genre)) == genres)) +
         xlim(1911, 2019) +
+<<<<<<< HEAD
         ylim(1, 10)
 =======
                              filter(toString(input$Genre) == genres)) +
          xlim(1911, 2019) +
          ylim(1, 10)
 >>>>>>> 000b0619b2d6e733641f600564dabc4d3ebfa2a5
+=======
+        ylim(1, 10) 
+        
+>>>>>>> kyle
     )
   }
 )
