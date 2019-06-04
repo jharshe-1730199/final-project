@@ -14,6 +14,9 @@ shinyServer(
          xlim(1911, 2019) +
          ylim(1, 10)
     )
+<<<<<<< HEAD
 
+=======
+>>>>>>> keagan
   }
 )
