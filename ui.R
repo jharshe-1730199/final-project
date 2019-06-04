@@ -80,14 +80,10 @@ shinyUI(
         
         # All the genres that a user can choose
         sidebarPanel(
-          selectInput("Genre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
-                                                           "Comedy","Crime","Documentary","Drama","Family",
-                                                           "Fantasy","History","Horror","Musical","Mystery",
-                                                           "Romance","Sci-Fi","Thriller","War","Western",
-                                                           "Action,Adventure","Action,Comedy","Action,Sci-Fi",
-                                                           "Comedy,Drama","Drama,Romance","Documentary,Horror",
-                                                           "Horror,Romance","Horror,Thriller","Musical,Romance"
-                                                           )
+          checkboxGroupInput("Genre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
+                                                                    "Comedy","Crime","Documentary","Drama","Family",
+                                                                    "Fantasy","Film-Noir","History","Horror","Musical","Mystery",
+                                                                    "Romance","Sci-Fi","Sport","Thriller","War","Western")
           )
         ),
         mainPanel(
