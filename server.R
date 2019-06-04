@@ -40,10 +40,15 @@ shinyServer(
     output$genreRate <- renderPlot(
       ggplot(movies, aes(x = year, y = averageRating, size = numVotes)) +
         geom_point(data = movies %>%
+<<<<<<< HEAD
                           filter(gsub(" ", "", toString(input$Genre)) == genres)) +
         xlim(1911, 2019) +
         ylim(1, 10)
+=======
+                             filter(toString(input$Genre) == genres)) +
+         xlim(1911, 2019) +
+         ylim(1, 10)
+>>>>>>> 000b0619b2d6e733641f600564dabc4d3ebfa2a5
     )
-    
   }
 )
