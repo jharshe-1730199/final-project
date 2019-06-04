@@ -8,6 +8,7 @@
 
 library(shiny)
 movies <- read.csv("data/movies.csv")
+
 shinyUI(
   navbarPage(
     "IMDB Data",
@@ -25,7 +26,7 @@ shinyUI(
                     min = 44, max = 450, value = 150)
       ),
       mainPanel(
-#        plotOutput("movieRuntime"),
+        plotOutput("movieRuntime")
       )
     ),
     
@@ -36,7 +37,7 @@ shinyUI(
                     min = 1911, max = 2019, value = 2000)
       ),
       mainPanel(
- #       plotOutput("movieYear"),
+        plotOutput("movieYear")
       )
     ),
 
@@ -47,7 +48,7 @@ shinyUI(
                     min = 5, max = 95.5, value = 40)
       ),
       mainPanel(
-#       plotOutput("movieAge")
+       plotOutput("movieAge")
       )
     ),
     
@@ -70,9 +71,7 @@ shinyUI(
           )
         ),
         mainPanel(
-        #  p("This app is made by movie lovers for movie lovers! Here you can learn about.....YADAYADAYDADA"),
           plotOutput("genreRate") # Scatter plot
-        #  plotOutput("yearRate")  # Barplot 
         )
 
       )
