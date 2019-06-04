@@ -51,8 +51,3 @@ joined <- select(joined, -c('nconst', 'birthYear', 'age')) %>%
 joined <- joined[!duplicated(joined$tconst), ]
 
 write.csv(joined, 'data/movies.csv')
-
-
-
-
-
