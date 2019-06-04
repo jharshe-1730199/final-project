@@ -1,29 +1,15 @@
 # The Server output for our IMDB Dataset
 library(shiny)
 library(ggplot2)
-movies <- read.csv("data/movies.csv")
+movies <- read.csv("data/movies.csv", stringsAsFactors = FALSE)
 
 shinyServer(
   function(input, output) {
     
-    sortGenres <- reactive({
-      mov <- movies %>% filter(grepl(movies$genres, input$Genre))
-      mov
+    output$yearRate <- renderPlot({
+      ggplot(movies, aes(x=averageRating, fill=genres, color=genres)) +
+      geom_histogram(position="identity")
     })
-    
-    output$genreOutput <- renderPlot({
-      # ggplot(movies, aes(year, averageRating)) + 
-      # geom_bar(data = movies, aes(fill=type), color="coral1")
-      p <- ggplot(sortGenres(), aes(year, averageRating))
-      p + geom_bar(stat = "identity", aes(fill = year))
-    })
-    
-    output$genreRate <- renderPlot(
-      ggplot(movies, aes(x = movies$year, y = movies$averageRating)) +
-        geom_point()
-        
-      
-    )
   
   }
 )
