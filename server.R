@@ -1,16 +1,19 @@
 # The Server output for our IMDB Dataset
+
 library(shiny)
 library(ggplot2)
+library(dplyr)
 movies <- read.csv("data/movies.csv")
 
 shinyServer(
   function(input, output) {
+    
     output$genreRate <- renderPlot(
-      ggplot(movies, aes(x = movies$year, y = movies$averageRating)) +
-        geom_point()
-        
-      
+      ggplot(movies, aes(x = year, y = averageRating)) +
+        geom_point(data = movies %>%
+                          filter(grepl(toString(input$Genre), genres))
+        )
     )
-  
+    
   }
 )

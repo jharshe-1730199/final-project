@@ -23,18 +23,19 @@ shinyUI(
                                                          "Horror","Thriller","Mystery","Crime",
                                                          "Biography","Comedy","Animation","Fantasy",
                                                          "Action","War","Romance","Family","History",
-                                                         "Musical"))
+                                                         "Musical","Western","Sport","Documentary",
+                                                         "Film-Noir"))
       ),
-      
+
       # All the release years that a user can choose
-      sidebarPanel(
-        selectInput("Year", "Choose a year", choices = c(1911:2019))
-      )
+#      sidebarPanel(
+#        selectInput("Year", "Choose a year", choices = c(1911:2019))
+#      ),
       
       mainPanel(
-        p("This app is made by movie lovers for movie lovers! Here you can learn about.....YADAYADAYDADA"),
+      #  p("This app is made by movie lovers for movie lovers! Here you can learn about.....YADAYADAYDADA"),
         plotOutput("genreRate") # Scatter plot
-        plotOutput("yearRate")  # Barplot 
+      #  plotOutput("yearRate")  # Barplot 
       )
     )
   )
