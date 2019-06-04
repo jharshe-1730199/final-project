@@ -8,8 +8,7 @@ shinyServer(
   function(input, output) {
     
     output$yearRate <- renderPlot({
-      ggplot(movies, aes(x=averageRating, fill=genres, color=genres)) +
-      geom_histogram(position="identity")
+      ggplot(movies$year==input$yearslider, aes(x=averageRating)) + geom_histogram()
     })
   
     output$genreRate <- renderPlot(
