@@ -7,8 +7,20 @@ movies <- read.csv("data/movies.csv")
 shinyServer(
   function(input, output) {
     
-    output$yearRate <- renderPlot({
-      ggplot(movies$year==input$yearslider, aes(x=averageRating)) + geom_histogram()
+    output$movieYear <- renderPlot({
+      ggplot(movies, aes(x=averageRating)) + 
+        geom_histogram(data = movies %>% 
+                         filter(input$year == year))
+    })
+    output$movieRuntime <- renderPlot({
+      ggplot(movies, aes(x=averageRating)) + 
+        geom_histogram(data = movies %>% 
+                         filter(input$runtime == runtime))
+    })
+    output$movieAge <- renderPlot({
+      ggplot(movies, aes(x=averageRating)) + 
+        geom_histogram(data = movies %>% 
+                         filter(input$age == average_age))
     })
   
     output$genreRate <- renderPlot(
