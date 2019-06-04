@@ -74,6 +74,7 @@ shinyUI(
           plotOutput("genreRate") # Scatter plot
         #  plotOutput("yearRate")  # Barplot 
         )
+
       )
     )
   )
