@@ -19,15 +19,36 @@ shinyUI(
     ),
     
     tabPanel(
-      "1st Plot"
+      "1st Plot",
+      sidebarPanel(
+        sliderInput("runtime","Movie Runtime:",
+                    min = 44, max = 450, value = 150)
+      ),
+      mainPanel(
+#        plotOutput("movieRuntime"),
+      )
     ),
     
     tabPanel(
-      "2nd Plot"
+      "2nd Plot",
+      sidebarPanel(
+        sliderInput("year","Year of Release:",
+                    min = 1911, max = 2019, value = 2000)
+      ),
+      mainPanel(
+ #       plotOutput("movieYear"),
+      )
     ),
-    
+
     tabPanel(
-      "3rd Plot"
+      "3rd Plot",
+      sidebarPanel(
+        sliderInput("age","Average Actor Age:",
+                    min = 5, max = 95.5, value = 40)
+      ),
+      mainPanel(
+#       plotOutput("movieAge")
+      )
     ),
     
     tabPanel(
