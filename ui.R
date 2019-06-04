@@ -21,23 +21,32 @@ shinyUI(
         selectInput("Genre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
                                                          "Comedy","Crime","Documentary","Drama","Family",
                                                          "Fantasy","History","Horror","Musical","Mystery",
-                                                         "Romance","Sci-Fi","Thriller","War","Western",
+                                                     "Romance","Sci-Fi","Thriller","War","Western",
                                                          "Action,Adventure","Action,Comedy","Action,Sci-Fi",
                                                          "Comedy,Drama","Drama,Romance","Documentary,Horror",
                                                          "Horror,Romance","Horror,Thriller","Musical,Romance"
                                                          )
         )
       ),
-
-      # All the release years that a user can choose
-#      sidebarPanel(
-#        selectInput("Year", "Choose a year", choices = c(1911:2019))
-#      ),
       
+      sidebarPanel(
+        sliderInput("runtime","Movie Runtime:",
+                    min = 44, max = 450, value = 150)
+      ),
+      sidebarPanel(
+        sliderInput("year","Year of Release:",
+                    min = 1911, max = 2019, value = 2000)
+      ),
+      sidebarPanel(
+        sliderInput("age","Average Actor Age:",
+                    min = 5, max = 95.5, value = 40)
+      ),
+
       mainPanel(
-      #  p("This app is made by movie lovers for movie lovers! Here you can learn about.....YADAYADAYDADA"),
-        plotOutput("genreRate") # Scatter plot
-      #  plotOutput("yearRate")  # Barplot 
+        plotOutput("genreRate"), # Scatter plot
+        plotOutput("movieRuntime"),
+        plotOutput("movieYear"),
+        plotOutput("movieAge")
       )
     )
   )
