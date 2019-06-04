@@ -1,8 +1,8 @@
 # The User Interface for our IMDB Dataset
-# 1. User chooses the year of interest and sees a barplot of 
+# 1. User chooses the year of interest and sees a BARPLOT of 
 #   genres on x-axis and average rating on y-axis
 
-# 2. User chooses the genre of interest and sees a scatterplot
+# 2. User chooses the genre of interest and sees a SCATTERPLOT
 #    of a year vs average Rating
 # grepl(genres, "string of single genre")
 # GET KEAGAN TO GO THROUGH GENRES ON THE CSV TO MAKE SURE I HAVE ALL THE OPTIONS AVAILABLE
