@@ -4,6 +4,7 @@ movies <- read.csv("data/movies.csv")
 
 shinyServer(
   function(input, output) {
-    
+    output$genreRate <- renderPlot 
+  
   }
 )
