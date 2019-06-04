@@ -15,11 +15,10 @@ library(shiny)
 movies <- read.csv("data/movies.csv")
 shinyUI(
   navbarPage(
-    "IMDB Data",
+    "IMDB Data Report",
     tabPanel(
       "Home",
       mainPanel(
-        
       )
     ),
     
@@ -76,7 +75,7 @@ shinyUI(
         ),
         mainPanel(
         #  p("This app is made by movie lovers for movie lovers! Here you can learn about.....YADAYADAYDADA"),
-          plotOutput("genreRate") # Scatter plot
+        #plotOutput("genreRate") # Scatter plot
         #  plotOutput("yearRate")  # Barplot 
         )
       )
