@@ -25,11 +25,7 @@ shinyUI(
                                                          )
         )
       ),
-      
-#      sidebarPanel(
-#        sliderInput("runtime","Movie Runtime:",
-#                    min = 44, max = 450, value = 150)
-#      ),
+
 #      sidebarPanel(
 #        sliderInput("year","Year of Release:",
 #                    min = 1911, max = 2019, value = 2000)
@@ -40,10 +36,10 @@ shinyUI(
 #      ),
 
       mainPanel(
-        plotOutput("genreRate") # Scatter plot
-#        plotOutput("movieRuntime"),
-#        plotOutput("movieYear"),
-#        plotOutput("movieAge")
+        plotOutput("genreRate"), # Scatter plot
+        plotOutput("movieRuntime"),
+        plotOutput("movieYear"),
+        plotOutput("movieAge")
       )
     )
   )

@@ -12,7 +12,8 @@ shinyServer(
         geom_point(data = movies %>%
                           filter(gsub(" ", "", toString(input$Genre)) == genres)) +
         xlim(1911, 2019) +
-        ylim(1, 10)
+        ylim(1, 10) 
+        
     )
     
   }
