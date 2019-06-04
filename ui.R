@@ -8,7 +8,8 @@
 # 3. User chooses the average actor age on a slider and sees a HISTOGRAM
 #   of average rating on x-axis and frequency on y-axis.
 #
-# grepl(genres, "string of single genre")
+# 4. User chooses the runtime of interest and sees a HISTOGRAM of
+#   of average rating on x-axis and frequency on y-axis.
 
 
 library(shiny)

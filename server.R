@@ -18,11 +18,7 @@ shinyServer(
       hist(x, breaks = bins, col = "#75AADB", border = "white",
            xlab = "Average rating",
            main = "Histogram of average movie ratings based on average actor age"
-           
-    )
+      )
     )  
-      
   }
-
-  
 )
