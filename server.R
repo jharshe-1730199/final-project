@@ -1,3 +1,9 @@
 # The Server output for our IMDB Dataset
+library(shiny)
+movies <- read.csv("data/movies.csv")
 
-<p> hello </p>
+shinyServer(
+  function(input, output) {
+    
+  }
+)
