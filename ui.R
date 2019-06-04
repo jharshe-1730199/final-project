@@ -33,20 +33,6 @@ shinyUI(
                                                          )
         )
       ),
-
-      # All the release years that a user can choose
-      sidebarPanel(
-        selectInput("Year", "Choose a year", choices = c(1911:2019))
-      ),
-      
-      # The minimum and maximum average actor ages that a user can choose
-      sliderInput(inputId = "bins",
-                  label = "Number of bins:",
-                  min = 5,
-                  max = 95.5,
-                  value = 30)
-      ),
-      
       mainPanel(
       #  p("This app is made by movie lovers for movie lovers! Here you can learn about.....YADAYADAYDADA"),
         plotOutput("genreRate"), # Scatter plot
@@ -55,3 +41,4 @@ shinyUI(
       )
     )
   )
+)
