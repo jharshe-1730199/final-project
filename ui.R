@@ -22,11 +22,31 @@ shinyUI(
     tabPanel(
       "1st Plot",
       sidebarPanel(
-        sliderInput("runtime","Movie Runtime:",
-                    min = 44, max = 450, value = 150)
+        radioButtons("sliders", "How many runtimes would you like to compare?", c("one", "two")),
+        conditionalPanel(
+          condition = "input.sliders == 'one'",
+          sliderInput("runtime1","Movie Runtime:",
+                      min = 44, max = 220, value = 150)
+        ),
+        conditionalPanel(
+          condition = "input.sliders == 'two'",
+          sliderInput("runtime2","Movie Runtime:",
+                      min = 44, max = 220, value = 150),
+          sliderInput("runtime3","Movie Runtime:",
+                      min = 44, max = 220, value = 150)
+        )
       ),
+ 
       mainPanel(
-        plotOutput("movieRuntime")
+        conditionalPanel(
+          condition = "input.sliders == 'one'",
+          plotOutput("movieRuntime1")
+        ),
+        conditionalPanel(
+          condition = "input.sliders == 'two'",
+          plotOutput("movieRuntime2"),
+          plotOutput("movieRuntime3")
+        )
       )
     ),
     
