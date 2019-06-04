@@ -18,35 +18,32 @@ shinyUI(
       
       # All the genres that a user can choose
       sidebarPanel(
-        selectInput("Genre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
+        checkboxGroupInput("Genre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
                                                          "Comedy","Crime","Documentary","Drama","Family",
-                                                         "Fantasy","History","Horror","Musical","Mystery",
-                                                     "Romance","Sci-Fi","Thriller","War","Western",
-                                                         "Action,Adventure","Action,Comedy","Action,Sci-Fi",
-                                                         "Comedy,Drama","Drama,Romance","Documentary,Horror",
-                                                         "Horror,Romance","Horror,Thriller","Musical,Romance"
+                                                         "Fantasy","Film-Noir","History","Horror","Musical","Mystery",
+                                                         "Romance","Sci-Fi","Sport","Thriller","War","Western"
                                                          )
         )
       ),
       
-      sidebarPanel(
-        sliderInput("runtime","Movie Runtime:",
-                    min = 44, max = 450, value = 150)
-      ),
-      sidebarPanel(
-        sliderInput("year","Year of Release:",
-                    min = 1911, max = 2019, value = 2000)
-      ),
-      sidebarPanel(
-        sliderInput("age","Average Actor Age:",
-                    min = 5, max = 95.5, value = 40)
-      ),
+#      sidebarPanel(
+#        sliderInput("runtime","Movie Runtime:",
+#                    min = 44, max = 450, value = 150)
+#      ),
+#      sidebarPanel(
+#        sliderInput("year","Year of Release:",
+#                    min = 1911, max = 2019, value = 2000)
+#      ),
+#      sidebarPanel(
+#        sliderInput("age","Average Actor Age:",
+#                    min = 5, max = 95.5, value = 40)
+#      ),
 
       mainPanel(
-        plotOutput("genreRate"), # Scatter plot
-        plotOutput("movieRuntime"),
-        plotOutput("movieYear"),
-        plotOutput("movieAge")
+        plotOutput("genreRate") # Scatter plot
+#        plotOutput("movieRuntime"),
+#        plotOutput("movieYear"),
+#        plotOutput("movieAge")
       )
     )
   )
