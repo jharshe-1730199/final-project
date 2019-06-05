@@ -3,8 +3,10 @@ library(shiny)
 movies <- read.csv("data/movies.csv")
 
 shinyUI(
+  #NavbarPage for tabs
   navbarPage(
     "IMDB Data Report",
+    #Info Home Page
     tabPanel(
       "Home",
       titlePanel("Home"),
@@ -27,19 +29,22 @@ shinyUI(
           names for easier manipulation and removed excess data frames and duplicate files for RAM saving. In the
           end the data was compressed into a usable size for group work, about 2.4mb."),
         h4("Credits", align = "center"),
-        em("This Shiny App was created collaboratively by: Keegan Anderson, Jacinta Harshe, Kyle Kusche, and Ronak Patel.")
+        em("This Shiny App was created collaboratively by: Keagan Anderson, Jacinta Harshe, Kyle Kusche, and Ronak Patel.")
       )
     ),
     
+    #First Plot
     tabPanel(
       "Movie Ratings by Runtime",
       sidebarPanel(
         radioButtons("sliders", "How many runtimes would you like to compare?", c("one", "two")),
+        #One Plot only
         conditionalPanel(
           condition = "input.sliders == 'one'",
           sliderInput("runtime1","Movie Runtime:",
                       min = 44, max = 220, value = 150)
         ),
+        #2 Plots in case you want to compare 2 Runtimes
         conditionalPanel(
           condition = "input.sliders == 'two'",
           sliderInput("runtime2","Movie Runtime:",
@@ -48,13 +53,14 @@ shinyUI(
                       min = 44, max = 220, value = 150)
         )
       ),
- 
       mainPanel(
         h3("Critical Question: "),
+        #Plot associated with solo slider
         conditionalPanel(
           condition = "input.sliders == 'one'",
           plotOutput("movieRuntime1")
         ),
+        #Plots associated with dual sliders
         conditionalPanel(
           condition = "input.sliders == 'two'",
           plotOutput("movieRuntime2"),
@@ -74,17 +80,20 @@ shinyUI(
       )
     ),
     
+    # 2nd Plot Page
     tabPanel(
       "Movie Ratings by Release year",
       sidebarPanel(
         sliderInput("year","Year of Release:",
                     min = 1911, max = 2019, value = 2000)
       ),
+      # Plot dependent on year chosen
       mainPanel(
         plotOutput("movieYear")
       )
     ),
 
+    #3rd Plot page
     tabPanel(
       "Ratings ScatterPlot",
     
@@ -115,6 +124,7 @@ shinyUI(
       )
     ),
     
+    # 4th Plot Page
     tabPanel(
       "Top Rated Movies",
       
