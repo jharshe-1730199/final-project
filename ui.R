@@ -160,9 +160,9 @@ shinyUI(
           )
         ),
         mainPanel(
-        h4("Critical Question: "),
+        h4("Critical Question: Does classifying drama as an additional genre to a movie lead to higher ratings?"),
         plotOutput("genreRate"), # Scatter plot
-        h4("Description: Does classifying drama as an additional genre to a movie lead to higher ratings?"),
+        h4("Description:"),
         p("This plot allows a user to select a range of genres from a checkbox.
           If the user selects one genre, it will pull data only from movies classified as that
           single genre. If the user selects multiple genres, it will pull data only from movies
