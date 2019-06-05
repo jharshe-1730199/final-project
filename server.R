@@ -2,7 +2,6 @@
 library(shiny)
 library(ggplot2)
 library(dplyr)
-library(randomcoloR)
 movies <- read.csv("data/movies.csv")
 
 shinyServer(
@@ -31,12 +30,7 @@ shinyServer(
                          filter(input$runtime3 == runtime)) +
         xlim(1, 10)
     })
-    output$movieAge <- renderPlot({
-      ggplot(movies, aes(x=averageRating)) + 
-        geom_histogram( data = movies %>% 
-                         filter(input$age == average_age))
-    })
-  
+
     output$genreRate <- renderPlot(
       ggplot(movies, aes(x = year, y = averageRating, size = numVotes)) +
         geom_point(data = movies %>%
@@ -45,5 +39,11 @@ shinyServer(
         ylim(1, 10)
     )
     
+    output$top5 <- renderTable(
+      movieFilter <- movies %>%
+        filter(year == input$Year) %>% 
+        filter(grepl(input$movieGenre, genres)) %>% 
+        filter(averageRating == max(averageRating))
+    )
   }
 )
