@@ -119,7 +119,7 @@ shinyServer(
                           filter(gsub(" ", "", toString(input$Genre)) == genres)) +
         xlim(1911, 2019) +
         ylim(1, 10) +
-        labs(y="Year", x = "Rating") +
+        labs(y="Rating", x = "Year") +
         ggtitle(toString(input$Genre))
     )
     
