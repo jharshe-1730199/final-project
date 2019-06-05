@@ -74,7 +74,7 @@ shinyUI(
         h4("Description: "),
         p("This plot allows the user to select one or two runtimes of interest on
           sliders and see a histogram of average rating on x-axis and number of movies with
-          rating  on y-axis. If the user chooses to compare two runtimes, another graph will
+          that rating on the y-axis. If the user chooses to compare two runtimes, another graph will
           appear below the first, so that the user can clearly view the differences."),
         h4("Conclusion:"),
         p("After playing with this plot, you may notice that the movie rating of roughly
