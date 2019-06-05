@@ -105,7 +105,7 @@ shinyServer(
     # Histogram of Average Rating vs Frequency depending on runtime given (3rd Slider)
     output$movieRuntime3 <- renderPlot({
       ggplot(movies, aes(x=averageRating)) + 
-        geom_histogram(fill = "#dd9200", data = movies %>% 
+        geom_histogram(fill = "#005c31", data = movies %>% 
                          filter(input$runtime3 == runtime)) +
         xlim(1, 10) +
         labs(y="Frequency", x = "Runtime") +
