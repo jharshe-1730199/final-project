@@ -3,6 +3,8 @@ library(shiny)
 movies <- read.csv("data/movies.csv")
 
 shinyUI(
+  fluidPage(
+  includeCSS("styles.css"),
   #NavbarPage for tabs
   navbarPage(
     "IMDB Data Report",
@@ -145,5 +147,6 @@ shinyUI(
         )
       )
     )
+  )
   )
 )

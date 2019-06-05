@@ -1,0 +1,48 @@
+@import url("https://use.typekit.net/xbg7zzr.css");
+
+body {
+    font-family: 'Europa';
+    color: white;
+    background-color: #252525;
+}
+
+.container-fluid .navbar.navbar-default {
+    background-color: #252525;
+}
+
+.container-fluid .navbar.navbar-default a {
+    color: white !important;
+    transition: 0.2s;
+}
+
+.container-fluid .navbar.navbar-default a:hover {
+    color: rgba(255, 136, 0, 0.8);
+}
+
+.container-fluid .navbar .navbar-nav>.active>a {
+    background-color: #ff8800;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+form.well {
+    background-color: #252525;
+    border: none;
+    box-shadow: none;
+}
+
+.container-fluid .container-fluid form.well .irs-max,
+.container-fluid .container-fluid form.well .irs-min {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.container-fluid .container-fluid form.well .irs-bar,
+.irs-bar-edge {
+    border: 1px solid #ff8800;
+    background: #ff8800;
+}
+
+.container-fluid .container-fluid form.well .irs-single {
+    background: transparent;
+}
