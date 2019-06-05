@@ -1,18 +1,13 @@
 # The User Interface for our IMDB Dataset
-# 1. User chooses the year of interest and sees a BARPLOT of 
-#   genres on x-axis and average rating on y-axis
-
-# 2. User chooses the genre of interest and sees a SCATTERPLOT
-#    of a year vs average Rating
-# grepl(genres, "string of single genre")
-
 library(shiny)
 movies <- read.csv("data/movies.csv")
 
 
 shinyUI(
+  #NavbarPage for tabs
   navbarPage(
     "IMDB Data Report",
+    #Info Home Page
     tabPanel(
       "Home",
       titlePanel("The Movie Report"),
@@ -41,15 +36,18 @@ shinyUI(
       )
     ),
     
+    #First Plot
     tabPanel(
-      "Runtime Ratings",
+      "Movie Ratings by Runtime",
       sidebarPanel(
         radioButtons("sliders", "How many runtimes would you like to compare?", c("one", "two")),
+        #One Plot only
         conditionalPanel(
           condition = "input.sliders == 'one'",
           sliderInput("runtime1","Movie Runtime:",
                       min = 44, max = 220, value = 150)
         ),
+        #2 Plots in case you want to compare 2 Runtimes
         conditionalPanel(
           condition = "input.sliders == 'two'",
           sliderInput("runtime2","Movie Runtime:",
@@ -58,13 +56,14 @@ shinyUI(
                       min = 44, max = 220, value = 150)
         )
       ),
- 
       mainPanel(
         h3("Critical Question: Do longer movies receive higher ratings due to more content?"),
+        #Plot associated with solo slider
         conditionalPanel(
           condition = "input.sliders == 'one'",
           plotOutput("movieRuntime1")
         ),
+        #Plots associated with dual sliders
         conditionalPanel(
           condition = "input.sliders == 'two'",
           plotOutput("movieRuntime2"),
@@ -87,12 +86,14 @@ shinyUI(
       )
     ),
     
+    # 2nd Plot Page
     tabPanel(
-      "Yearly Ratings",
+      "Movie Ratings by Release year",
       sidebarPanel(
         sliderInput("year","Year of Release:",
                     min = 1911, max = 2019, value = 2000)
       ),
+      # Plot dependent on year chosen
       mainPanel(
         h3("Critical Question: Do movies released at a later date receive more movie ratings?"),
         plotOutput("movieYear"),
@@ -114,7 +115,7 @@ shinyUI(
     ),
 
     tabPanel(
-      "Actor Age Ratings",
+      "Movie Ratings by Avg. Actor Age",
       sidebarPanel(
         sliderInput("age","Average Actor Age:",
                     min = 5, max = 95.5, value = 40)
@@ -141,8 +142,9 @@ shinyUI(
       )
     ),
     
+    #3rd Plot page
     tabPanel(
-      "Genre Ratings",
+      "Movie Ratings by Genre",
     
       sidebarLayout(
         position = "right",
@@ -192,6 +194,28 @@ shinyUI(
           and entertained throughout the entirety of the movie. As for those where the addition of drama did
           not increase their average rating, it is important to understand appropriateness. It makes sense that
           adding drama to a documentary or biography may be out of place.")
+        )
+      )
+    ),
+    
+    # 4th Plot Page
+    tabPanel(
+      "Top Rated Movies",
+      
+      sidebarLayout(
+        position = "right",
+        
+        sidebarPanel(
+          selectInput("Year", "Choose a year", choices = c(2019:1911)),
+          
+          selectInput("movieGenre", "Choose a genre", choices = c("Action","Adventure","Animation","Biography",
+                                                             "Comedy","Crime","Documentary","Drama","Family",
+                                                             "Fantasy","Film-Noir","History","Horror","Musical","Mystery",
+                                                             "Romance","Sci-Fi","Sport","Thriller","War","Western"))
+          
+        ),
+        mainPanel(
+          tableOutput("top5") # Table
         )
       )
     )
