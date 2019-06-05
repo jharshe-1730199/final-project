@@ -14,6 +14,9 @@ body {
     color: white !important;
     transition: 0.2s;
 }
+.container-fluid .navbar {
+    padding: 0 1rem 0 0;
+}
 
 .container-fluid .navbar.navbar-default a:hover {
     color: rgba(255, 136, 0, 0.8);

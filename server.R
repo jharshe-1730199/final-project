@@ -3,7 +3,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 movies <- read.csv("data/movies.csv")
-
+# This custom theme is to make the plots match the css file. 
 theme_custom <- function (base_size = 11, base_family = "") 
 {
   half_line <- base_size/2
@@ -19,7 +19,7 @@ theme_custom <- function (base_size = 11, base_family = "")
                         margin = margin(), debug = FALSE), 
     
     axis.line = element_blank(), 
-    axis.text = element_text(size = rel(0.8), colour = "grey30"),
+    axis.text = element_text(size = rel(0.8), colour = "white"),
     axis.text.x = element_text(margin = margin(t = 0.8*half_line/2), 
                                vjust = 1), 
     axis.text.y = element_text(margin = margin(r = 0.8*half_line/2),
@@ -54,8 +54,7 @@ theme_custom <- function (base_size = 11, base_family = "")
     panel.margin = unit(half_line, "pt"), panel.margin.x = NULL, 
     panel.margin.y = NULL, panel.ontop = FALSE, 
     
-    strip.background = element_rect(fill = "green", colour = NA),
-    strip.text = element_text(colour = "grey10", size = rel(0.8)),
+    strip.text = element_text(colour = "white", size = rel(0.8)),
     strip.text.x = element_text(margin = margin(t = half_line,
                                                 b = half_line)), 
     strip.text.y = element_text(angle = -90, 
@@ -78,7 +77,9 @@ shinyServer(
     output$movieYear <- renderPlot({
       ggplot(movies, aes(x=averageRating)) + 
         geom_histogram(fill = "#a10081", data = movies %>% 
-                         filter(input$year == year))
+                         filter(input$year == year)) + 
+        labs(y="Frequency", x = "Rating") +
+        ggtitle(toString(input$year))
     })
     
     # Histogram of Average Rating vs Frequency depending on runtime given (1st Slider)
@@ -86,7 +87,9 @@ shinyServer(
       ggplot(movies, aes(x=averageRating)) + 
         geom_histogram(fill = "#0ba100", data = movies %>% 
                          filter(input$runtime1 == runtime)) +
-        xlim(1, 10)
+        xlim(1, 10) +
+        labs(y="Frequency", x = "Runtime") +
+        ggtitle(input$runtime1)
     })
     
     # Histogram of Average Rating vs Frequency depending on runtime given (2nd Slider)
@@ -94,7 +97,9 @@ shinyServer(
       ggplot(movies, aes(x=averageRating)) + 
         geom_histogram(fill = "#ff8800", data = movies %>% 
                          filter(input$runtime2 == runtime)) +
-        xlim(1, 10)
+        xlim(1, 10) +
+        labs(y="Frequency", x = "Runtime") +
+        ggtitle(input$runtime2)
     })
     
     # Histogram of Average Rating vs Frequency depending on runtime given (3rd Slider)
@@ -102,7 +107,9 @@ shinyServer(
       ggplot(movies, aes(x=averageRating)) + 
         geom_histogram(fill = "#dd9200", data = movies %>% 
                          filter(input$runtime3 == runtime)) +
-        xlim(1, 10)
+        xlim(1, 10) +
+        labs(y="Frequency", x = "Runtime") +
+        ggtitle(input$runtime3)
     })
 
     # Scatterplot of Year vs Average rating depending on genre or genres selected
@@ -111,7 +118,9 @@ shinyServer(
         geom_point(color = "#ff8800",data = movies %>%
                           filter(gsub(" ", "", toString(input$Genre)) == genres)) +
         xlim(1911, 2019) +
-        ylim(1, 10)
+        ylim(1, 10) +
+        labs(y="Year", x = "Rating") +
+        ggtitle(toString(input$Genre))
     )
     
     # Table of the top rated movie of the given year that includes the given genre
