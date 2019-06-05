@@ -12,7 +12,7 @@ shinyUI(
     #Info Home Page
     tabPanel(
       "Home",
-      titlePanel("The Movie Report"),
+      titlePanel("The Movie Review"),
       mainPanel(
         h4("Preview", align = "center"),
         p("Movies are the heart of the American entertainment industry! Whether they are enjoyed
@@ -60,6 +60,7 @@ shinyUI(
         )
       ),
       mainPanel(
+        h2("Movie Ratings by Runtime"),
         h3("Critical Question: Do longer movies receive higher ratings due to more content?"),
         #Plot associated with solo slider
         conditionalPanel(
@@ -98,6 +99,7 @@ shinyUI(
       ),
       # Plot dependent on year chosen
       mainPanel(
+        h2("Movie Ratings by Release Year"),
         h3("Critical Question: Do movies released at a later date receive more movie ratings?"),
         plotOutput("movieYear"),
         h4("Description:"),
@@ -130,7 +132,8 @@ shinyUI(
           )
         ),
         mainPanel(
-        h4("Critical Question: Does classifying drama as an additional genre to a movie lead to higher ratings?"),
+        h2("Movie Ratings by Genre"),
+        h3("Critical Question: Does classifying drama as an additional genre to a movie lead to higher ratings?"),
         plotOutput("genreRate"), # Scatter plot
         h4("Description:"),
         p("This plot allows a user to select a range of genres from a checkbox.
@@ -187,12 +190,13 @@ shinyUI(
           
         ),
         mainPanel(
+          h2("Top Rated Movies"),
           tableOutput("top5"), # Table
           br(),
           h4("Description: "),
           p("This table allows a user to first select a year of interest and then select a genre of interest.
             The table will then display the movie title, year, runtime, genre(s) and average rating of the 
-            top rated movie of that year. There are no patterns to depict or recognize due to the nature oft
+            top rated movie(s) of that year. There are no patterns to depict or recognize due to the nature oft
             this table.")
         )
       )
